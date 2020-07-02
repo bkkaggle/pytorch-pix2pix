@@ -125,9 +125,9 @@ for epoch in range(opt.train_epoch):
         D_train_loss.backward()
         D_optimizer.step()
 
-        train_hist['D_losses'].append(D_train_loss.data[0])
+        train_hist['D_losses'].append(D_train_loss.item())
 
-        D_losses.append(D_train_loss.data[0])
+        D_losses.append(D_train_loss.item())
 
         # train generator G
         G.zero_grad()
@@ -139,9 +139,9 @@ for epoch in range(opt.train_epoch):
         G_train_loss.backward()
         G_optimizer.step()
 
-        train_hist['G_losses'].append(G_train_loss.data[0])
+        train_hist['G_losses'].append(G_train_loss.item())
 
-        G_losses.append(G_train_loss.data[0])
+        G_losses.append(G_train_loss.item())
 
         num_iter += 1
 
