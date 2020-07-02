@@ -252,7 +252,10 @@ class discriminator(nn.Module):
         for m in self._modules:
             normal_init(self._modules[m], mean, std)
 
-    def forward(self, x):
+    # def forward(self, x):
+    def forward(self, x, y):
+
+        x = torch.cat([x, y], 1)
 
         x = self.relu1(self.conv1(x))
         x = self.relu2(self.bn2(self.conv2(x)))
