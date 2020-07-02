@@ -110,9 +110,14 @@ import torch.nn.functional as F
 #         return x
 
 
-def normal_init(m, mean, std):
+# def normal_init(m, mean, std):
+#     if isinstance(m, nn.ConvTranspose2d) or isinstance(m, nn.Conv2d):
+#         m.weight.data.normal_(mean, std)
+#         m.bias.data.zero_()
+
+def normal_init(m):
     if isinstance(m, nn.ConvTranspose2d) or isinstance(m, nn.Conv2d):
-        m.weight.data.normal_(mean, std)
+        m.weight.data.normal_(0.0, 0.02)
         m.bias.data.zero_()
 
 
@@ -249,6 +254,7 @@ class discriminator(nn.Module):
         self.conv5 = nn.Conv2d(512, 1, kernel_size=4, stride=2, padding=1)
 
     def weight_init(self, mean, std):
+        # self.apply(normal_init)
         for m in self._modules:
             normal_init(self._modules[m], mean, std)
 
