@@ -178,7 +178,7 @@ class DecoderBlock(nn.Module):
 
 
 class generator(nn.Module):
-    def __init__(self):
+    def __init__(self, x=64):
         super(generator, self).__init__()
 
         self.enc1 = nn.Conv2d(3, 64, kernel_size=4, stride=2, padding=1)
@@ -228,7 +228,7 @@ class generator(nn.Module):
 
 
 class discriminator(nn.Module):
-    def __init__(self):
+    def __init__(self, x=64):
         super(discriminator, self).__init__()
 
         self.conv1 = nn.Conv2d(6, 64, kernel_size=4, stride=2, padding=1)
