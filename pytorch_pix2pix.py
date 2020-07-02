@@ -5,6 +5,8 @@ import torch.optim as optim
 from torchvision import transforms
 from torch.autograd import Variable
 
+from tqdm import tqdm
+
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', required=False, default='facades',  help='')
 parser.add_argument('--train_subfolder', required=False, default='train',  help='')
@@ -87,7 +89,7 @@ for epoch in range(opt.train_epoch):
     G_losses = []
     epoch_start_time = time.time()
     num_iter = 0
-    for x_, _ in train_loader:
+    for x_, _ in tqdm(train_loader):
         # train discriminator D
         D.zero_grad()
 
