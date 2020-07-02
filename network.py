@@ -202,7 +202,7 @@ class generator(nn.Module):
         self.dec5 = DecoderBlock(1024, 256, dropout=False)
         self.dec6 = DecoderBlock(512, 128, dropout=False)
         self.dec7 = DecoderBlock(256, 64, dropout=False)
-        self.dec8 = DecoderBlock(128, 3, dropout=False)
+        self.dec8 = DecoderBlock(128, 3, dropout=False, bn=False, relu=False)
 
     def weight_init(self, mean, std):
         for m in self._modules:
